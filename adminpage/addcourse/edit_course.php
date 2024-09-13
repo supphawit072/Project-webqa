@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
                 <div class="text-center">
                     <a href="http://localhost/connectform/adminpage/addcourse/index_course.php" class="btn btn-primary">Cancel</a>
-                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </form>
         </div>

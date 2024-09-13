@@ -16,10 +16,11 @@ if (!$conn) {
 $course_code = $course_name = $credits = $groups = "";
 $A = $B_plus = $B = $C_plus = $C = $D_plus = $D = $E = $F = $F_percent = "";
 $I = $VG = $G = $S = $W = $W_percent = $total = $instructor = "";
-$errMessage = $successMessage = "";
+$errMessage = $successMessage =$curriculum ="";
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     // รับค่าจากฟอร์มและกำหนดให้กับตัวแปร
+    $curriculum = $_POST["curriculum"] ?? "";
     $course_code = $_POST["course_code"] ?? "";
     $course_name = $_POST["course_name"] ?? "";
     $credits = $_POST["credits"] ?? "";
@@ -46,19 +47,22 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     // ตรวจสอบว่าฟิลด์จำเป็นถูกกรอกครบ
     if (
         empty($course_code) || empty($course_name) || empty($credits) || empty($groups) || empty($instructor)
+        || empty($curriculum)
+
     ) {
         $errMessage = "All the required fields are required.";
     } else {
         // เตรียม query
         $sql = $conn->prepare("INSERT INTO create_form 
-        (`course_code`, `course_name`, `credits`, `groups`, `A`, `B_plus`, `B`, `C_plus`, `C`, `D_plus`, `D`, `E`, `F`, `F_percent`, `I`, `W`, `W_percent`, `VG`, `G`, `S`, `total`, `instructor`) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        (`curriculum`,`course_code`, `course_name`, `credits`, `groups`, `A`, `B_plus`, `B`, `C_plus`, `C`, `D_plus`, `D`, `E`, `F`,
+         `F_percent`, `I`, `W`, `W_percent`, `VG`, `G`, `S`, `total`, `instructor`) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
 
         if (!$sql) {
             $errMessage = "Error preparing query: " . $conn->error;
         } else {
             // Bind parameters
-            $sql->bind_param("ssssssssssssssssssssss", $course_code, $course_name, $credits, $groups, $A, $B_plus, $B, $C_plus, $C, $D_plus, $D, $E, $F, $F_percent, $I, $W, $W_percent, $VG, $G, $S, $total, $instructor);
+            $sql->bind_param("sssssssssssssssssssssss", $curriculum, $course_code, $course_name, $credits, $groups, $A, $B_plus, $B, $C_plus, $C, $D_plus, $D, $E, $F, $F_percent, $I, $W, $W_percent, $VG, $G, $S, $total, $instructor);
 
             // Execute the statement
             if ($sql->execute()) {
@@ -140,6 +144,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 
             <form method="post">
                 <!-- ฟิลด์ข้อมูล -->
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Curriculum</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="curriculum" value="<?php echo htmlspecialchars($curriculum); ?>" style="width: 400px;">
+                    </div>
+                </div>
                 <div class="row mb-3">
                     <label class="col-sm-3 col-form-label">Course Code</label>
                     <div class="col-sm-9">
@@ -273,6 +283,33 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                         <input type="text" class="form-control" name="instructor" value="<?php echo htmlspecialchars($instructor); ?>" style="width: 400px;">
                     </div>
                 </div>
+                <style>
+                     .btn-psrimary-cancel {
+                    margin-top: 15px;
+                    
+                    border: none;
+                    color: white;
+                    padding: 5px 15px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin: 10px 2px;
+                    /*ปรับตำเเหน่งปุ่ม*/
+                    cursor: pointer;
+                    background-color: #fff;
+                    color: black;
+                    border: 1px solid #6633FF;
+                    margin-bottom: 1rem;
+                }
+
+                .btn-psrimary-cancel:hover {
+                    background-color: #6633CC;
+                    /* เปลี่ยนสีพื้นหลังเมื่อชี้ */
+                    color: white;
+                    /* เปลี่ยนสีตัวอักษรเมื่อชี้ */
+                }
+                </style>
                 <?php
                 if (!empty($successMessage)) {
                     echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
@@ -282,9 +319,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 }
                 ?>
                 <div class="text-center">
-                    <a class="btn btn-primary" href="http://localhost/connectform/adminpage/addform/index.php">Cancel</a>
+                    
                     <button type="button" class="btn btn-primary" onclick="calculateTotal()">Calculate Total</button>
                     <button type="submit" class="btn btn-success">Save</button>
+                    <a class="btn btn-psrimary-cancel" href="http://localhost/connectform/adminpage/addform/index.php">Cancel</a>
                 </div>
             </form>
         </div>

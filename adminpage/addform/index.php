@@ -4,155 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Form</title>
+    <title>Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <style>
-        .body-index {
-            background-color: #000;
-            color: #fff;
-            border-radius: 25px;
-        }
 
-        .table {
-            background-color: #333;
-            color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .table thead th {
-            background-color: #444;
-            color: #fff;
-        }
-
-        .table tbody tr:nth-child(even) {
-            background-color: #222;
-        }
-
-        .table tbody tr:nth-child(odd) {
-            background-color: #333;
-        }
-
-        .table-container {
-            margin-top: 30px;
-        }
-
-        .btn-primary {
-            margin-bottom: 15px;
-        }
-
-        .btn-danger {
-            margin-bottom: 15px;
-        }
-
-        .btn-custom-height {
-            padding: 10px 16px;
-            font-size: 16px;
-        }
-
-        .btn-custom-edit {
-            margin-right: 10px;
-            padding: 10px 16px;
-            font-size: 16px;
-        }
-
-        .table td,
-        .table th {
-            text-align: center;
-        }
-
-        .navbar {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .navbar-brand {
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-        }
-
-        .navbar-nav {
-            margin-left: auto;
-        }
-
-        .navbar-nav a {
-            color: #333;
-            font-weight: bold;
-        }
-
-        .navbar-nav a:hover {
-            /* ปรับเเถบเมนูเมื่อเอาเมาส์ไปชี้ */
-            color: #007bff;
-            font-size: 20px;
-        }
-
-        .navbar-nav .nav-item.active .nav-link {
-            color: #007bff;
-            /*สีบอกตำเเหน่งผู้ใช้อยู่หน้าไหน*/
-            font-weight: bold;
-        }
-
-        .login-button {
-            /*ปรับระยะของปุ่ม*/
-            margin-left: 1rem;
-            margin-top: 4rem;
-        }
-
-        li.nav-item {
-            /*ปรับตัวอักษรเเถบเมนู */
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            margin-top: auto;
-        }
-
-       
-        .form-control {  /* ปรับเเต่งช่องค้นหา */
-            border-radius: 10px;
-            /* ขอบมลของช่องค้นหา */
-            width: 400px;
-            margin-left: auto;
-            margin-right: 1rem
-        }
-
-        .btn-outline-primary {/* ปรับเเต่งค้นหาปุ่ม */
-            margin-right: 3rem;
-            border-radius: 10px;
-            /* ขอบมลของปุ่มค้นหา */
-            color: #fff;
-            /* สีตัวอักษรในปุ่ม */
-            
-        }
-        .modal-body {
-            color: #000; /* เปลี่ยนสีตัวอักษรใน modal-body เป็นสีดำ */
-        }
-        .modal-footer {
-            color: #000; /* เปลี่ยนสีตัวอักษรใน modal-footer เป็นสีดำ */
-        }
-        .navbar-nav {
-            margin-left: auto;
-        }
-
-        .ms-auto {
-           
-            margin-left: auto;
-            margin-right: 1rem;
-            /* ระยะห่างจากขอบขวา */
-        }
-    </style>
     <style>
         .modal-body {
-            color: #000; /* เปลี่ยนสีตัวอักษรใน modal-body เป็นสีดำ */
+            color: #000;
+            /* เปลี่ยนสีตัวอักษรใน modal-body เป็นสีดำ */
         }
+
         .modal-footer {
-            color: #000; /* เปลี่ยนสีตัวอักษรใน modal-footer เป็นสีดำ */
+            color: #000;
+            /* เปลี่ยนสีตัวอักษรใน modal-footer เป็นสีดำ */
         }
+
         .input-group {
             /* ขยับไปทางขวา */
             /* justify-content: flex-end;  */
             margin-left: auto;
-            margin-right: 1rem;/* ระยะห่างจากขอบขวา */
-            width: 450px;/*ปรับความยาวของช่างค้นหา */
-            
+            margin-right: 1rem;
+            /* ระยะห่างจากขอบขวา */
+            width: 450px;
+            /*ปรับความยาวของช่างค้นหา */
+
         }
     </style>
 </head>
@@ -183,67 +57,68 @@
                     <a class="btn btn-primary" href="http://localhost/connectform/login.php" role="button" style="color: #fff;">Login</a>
                 </div>
             </ul>
-          
+
         </div>
-       
+
     </nav>
     <style>
         .modal-content {
-            background-color: #ffffff; /* พื้นหลังสีขาว */
+            background-color: #ffffff;
+            /* พื้นหลังสีขาว */
         }
     </style>
-</head>
-<!DOCTYPE html>
-<html lang="en">
+    </head>
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Search</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <style>
-        .modal-body {
-            color: #000;
-            /* เปลี่ยนสีตัวอักษรใน modal-body เป็นสีดำ */
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Search</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <style>
+            .modal-body {
+                color: #000;
+                /* เปลี่ยนสีตัวอักษรใน modal-body เป็นสีดำ */
+            }
 
-        .modal-footer {
-            color: #000;
-            /* เปลี่ยนสีตัวอักษรใน modal-footer เป็นสีดำ */
-        }
+            .modal-footer {
+                color: #000;
+                /* เปลี่ยนสีตัวอักษรใน modal-footer เป็นสีดำ */
+            }
 
-        .input-group {
-            margin-left: auto;
-            margin-right: 1rem;
-            width: 450px;
-            /* ปรับความยาวของช่องค้นหา */
-        }
+            .input-group {
+                margin-left: auto;
+                margin-right: 1rem;
+                width: 450px;
+                /* ปรับความยาวของช่องค้นหา */
+            }
+        </style>
+    </head>
 
-        
-    </style>
-</head>
+    <body>
+        <!-- ค้นหา -->
+        <div class="container mt-4">
+            <form action="" method="GET">
+                <div class="input-group mb-3">
+                    <input id="searchInput" type="text" name="search" required value="<?php if (isset($_GET['search'])) {
+                                                                                            echo htmlspecialchars($_GET['search']);
+                                                                                        } ?>" class="form-control" placeholder="Search by Form ID">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
 
-<body>
-    <!-- ค้นหา -->
-    <div class="container mt-4">
-        <form action="" method="GET">
-            <div class="input-group mb-3">
-                <input id="searchInput" type="text" name="search" required value="<?php if (isset($_GET['search'])) { echo htmlspecialchars($_GET['search']); } ?>" class="form-control" placeholder="Search by Form ID">
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-        </form>
-
-        <!-- Modal -->
-        <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="formModalLabel">Form Details</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Content will be inserted here by PHP -->
-                        <?php
+            <!-- Modal -->
+            <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="formModalLabel">Form Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Content will be inserted here by PHP -->
+                            <?php
                             $con = mysqli_connect("localhost", "root", "", "app_qa");
 
                             if (isset($_GET['search']) && !empty($_GET['search'])) {
@@ -283,40 +158,241 @@
                             }
 
                             mysqli_close($con);
-                        ?>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            ?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Button to trigger the modal -->
+            <?php if (isset($_GET['search']) && !empty($_GET['search'])): ?>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var formModal = new bootstrap.Modal(document.getElementById('formModal'), {
+                            keyboard: false
+                        });
+                        formModal.show();
+
+                        // เคลียร์ช่องค้นหาหลังจากปิด modal
+                        var modalElement = document.getElementById('formModal');
+                        modalElement.addEventListener('hidden.bs.modal', function() {
+                            document.getElementById('searchInput').value = '';
+                        });
+                    });
+                </script>
+            <?php endif; ?>
         </div>
 
-        <!-- Button to trigger the modal -->
-        <?php if (isset($_GET['search']) && !empty($_GET['search'])): ?>
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    var formModal = new bootstrap.Modal(document.getElementById('formModal'), {
-                        keyboard: false
-                    });
-                    formModal.show();
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 
-                    // เคลียร์ช่องค้นหาหลังจากปิด modal
-                    var modalElement = document.getElementById('formModal');
-                    modalElement.addEventListener('hidden.bs.modal', function () {
-                        document.getElementById('searchInput').value = '';
-                    });
-                });
-            </script>
-        <?php endif; ?>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+    </html>
 
     <!-- ค้นหา -->
+    <style>
+        .body-index {
+            background-color: #000;
+            /* ตั้งค่าสีพื้นหลังของร่างกายหน้าเว็บเป็นสีดำ */
+            color: #fff;
+            /* ตั้งค่าสีข้อความเป็นสีขาว */
+            border-radius: 25px;
+            /* ตั้งค่าให้มีมุมโค้งมนที่ 25px */
+        }
+
+        .container {
+            width: calc(100% - 20px);
+            /* กำหนดความกว้างของคอนเทนเนอร์โดยหักขอบ 10px ซ้ายและขวา */
+            max-width: 2200px;
+            /* กำหนดความกว้างสูงสุดของคอนเทนเนอร์ */
+            margin: 0 auto;
+            /* ศูนย์กลางคอนเทนเนอร์ในหน้าจอ */
+            padding: 10px;
+            /* เพิ่ม padding รอบๆ คอนเทนเนอร์เพื่อเว้นขอบจากหน้าจอ */
+            box-sizing: border-box;
+            /* รวม padding และ border เข้ากับความกว้างที่กำหนด */
+        }
+
+        .table-container {
+            width: 100%;
+            /* ทำให้คอนเทนเนอร์ของตารางขยายเต็มความกว้างของคอนเทนเนอร์แม่ */
+            overflow-x: auto;
+            /* เพิ่ม scroll bar แนวนอนถ้าตารางกว้างกว่าคอนเทนเนอร์ */
+            padding: 10px;
+            /* เพิ่ม padding รอบๆ คอนเทนเนอร์ของตารางเพื่อเว้นขอบ */
+        }
+
+        .table {
+            background-color: #333;
+            /* ตั้งค่าสีพื้นหลังของตารางเป็นสีเทาเข้ม */
+            color: #fff;
+            /* ตั้งค่าสีข้อความของตารางเป็นสีขาว */
+            overflow: hidden;
+            /* ซ่อน overflow ที่เกิดขึ้นในตาราง */
+            width: 100%;
+            /* ทำให้ตารางขยายเต็มความกว้างของคอนเทนเนอร์ */
+            table-layout: auto;
+            /* กระจายพื้นที่คอลัมน์แบบคงที่เพื่อให้คอลัมน์ไม่ขยายตามเนื้อหามากเกินไป */
+        }
+
+        .table thead th {
+            background-color: #444;
+            /* ตั้งค่าสีพื้นหลังของหัวตารางเป็นสีเทาเข้ม */
+            color: #fff;
+            /* ตั้งค่าสีข้อความของหัวตารางเป็นสีขาว */
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #222;
+            /* ตั้งค่าสีพื้นหลังของแถวที่เป็นเลขคู่เป็นสีเทาเข้ม */
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background-color: #333;
+            /* ตั้งค่าสีพื้นหลังของแถวที่เป็นเลขคี่เป็นสีเทาเข้มกว่าแถวคู่ */
+        }
+
+        .table td,
+        .table th {
+            text-align: center;
+            /* ตั้งค่าการจัดตำแหน่งข้อความในตารางให้อยู่ตรงกลาง */
+            width: auto;
+            /* ปล่อยให้คอลัมน์ขยายตามเนื้อหา */
+        }
+
+        .btn-primary {
+            margin-bottom: 15px;
+            /* ตั้งค่าระยะห่างด้านล่างของปุ่ม */
+            margin-left: 1rem;
+        }
+
+        .btn-danger {
+            /* ปุ่มลบ */
+            margin-bottom: 15px;
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            border: 2px solid #f44336;
+            margin-bottom: 1rem;
+        }
+
+        .btn-custom-height {
+            padding: 10px 16px;
+            /* ตั้งค่า padding ของปุ่มเพื่อให้ความสูงเหมาะสม */
+            font-size: 16px;
+            /* ตั้งค่าขนาดตัวอักษรของข้อความในปุ่ม */
+        }
+
+        .btn-custom-edit {
+            margin-right: 10px;
+            /* ตั้งค่าระยะห่างด้านขวาของปุ่ม */
+            padding: 10px 16px;
+            /* เพิ่ม padding รอบๆ ข้อความในปุ่ม */
+            font-size: 16px;
+            /* ตั้งค่าขนาดตัวอักษรของข้อความในปุ่ม */
+        }
+
+        .navbar {
+            margin-bottom: 30px;
+            /* ตั้งค่าระยะห่างด้านล่างของแถบเมนู */
+            border-bottom: 1px solid #ddd;
+            /* เพิ่มเส้นขอบด้านล่างของแถบเมนู */
+        }
+
+        .navbar-brand {
+            font-family: 'Courier New', Courier, monospace;
+            /* ตั้งค่าฟอนต์ของชื่อแบรนด์ */
+            font-weight: bold;
+            /* ตั้งค่าความหนาของตัวอักษรเป็นตัวหนา */
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+            /* ขยับแถบเมนูไปทางขวา */
+        }
+
+        .navbar-nav a {
+            color: #333;
+            /* ตั้งค่าสีข้อความของลิงก์ในเมนูเป็นสีเทาเข้ม */
+            font-weight: bold;
+            /* ตั้งค่าความหนาของตัวอักษรเป็นตัวหนา */
+        }
+
+        .navbar-nav a:hover {
+            color: #007bff;
+            /* เปลี่ยนสีข้อความของลิงก์เมื่อเอาเมาส์ไปชี้เป็นสีน้ำเงิน */
+            font-size: 20px;
+            /* ขยายขนาดตัวอักษรเมื่อเอาเมาส์ไปชี้ */
+        }
+
+        .navbar-nav .nav-item.active .nav-link {
+            color: #007bff;
+            /* เปลี่ยนสีข้อความของลิงก์ที่เป็นสถานะ active เป็นสีน้ำเงิน */
+            font-weight: bold;
+            /* ตั้งค่าความหนาของตัวอักษรเป็นตัวหนา */
+        }
+
+        .login-button {
+            margin-left: 1rem;
+            /* ตั้งค่าระยะห่างด้านซ้ายของปุ่มเข้าสู่ระบบ */
+            margin-top: 2rem;
+            /* ตั้งค่าระยะห่างด้านบนของปุ่มเข้าสู่ระบบ */
+        }
+
+        li.nav-item {
+            font-family: 'Courier New', Courier, monospace;
+            /* ตั้งค่าฟอนต์ของรายการเมนู */
+            font-weight: bold;
+            /* ตั้งค่าความหนาของตัวอักษรเป็นตัวหนา */
+            margin-top: auto;
+            /* ปรับระยะห่างด้านบนของรายการเมนู */
+        }
+
+        .form-control {
+            margin-left: auto;
+            /* ขยับช่องค้นหาไปทางขวา */
+            margin-right: 1rem;
+            /* ตั้งค่าระยะห่างด้านขวาของช่องค้นหา */
+        }
+
+        .btn-download {
+            margin-top: 15px;
+            border: none;
+            color: black;
+            /* สีตัวอักษรปกติ */
+            padding: 5px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 10px 2px;
+            /* ปรับตำแหน่งปุ่ม */
+            cursor: pointer;
+            background-color: #fff;
+            /* สีพื้นหลังปกติ */
+            border: 1px solid #00FF00;
+            /* สีกรอบปุ่ม */
+            margin-bottom: 1rem;
+        }
+
+        .btn-download:hover {
+            background-color: #008000;
+            /* สีพื้นหลังเมื่อชี้เมาส์ */
+            color: white;
+            /* สีตัวอักษรเมื่อชี้เมาส์ */
+        }
+    </style>
     <div class="container my-5">
         <h2 style="font-family: 'Courier New', Courier, monospace; text-align: center;">List of Forms</h2>
         <a class="btn btn-primary" href="http://localhost/connectform/adminpage/addform/create.php" role="button" style="font-family: 'Courier New', Courier, monospace; font-weight: bold;">Add New</a>
@@ -325,7 +401,9 @@
             <table class="table">
                 <thead>
                     <tr>
+
                         <th>form_id</th>
+                        <th>curriculum</th>
                         <th>coursecode</th>
                         <th>coursename</th>
                         <th>credits</th>
@@ -375,7 +453,9 @@
                         // Output data for each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>
+                           
                                 <td>{$row['form_id']}</td>
+                                <td>{$row['curriculum']}</td>
                                 <td>{$row['course_code']}</td>
                                 <td>{$row['course_name']}</td>
                                 <td>{$row['credits']}</td>
@@ -401,6 +481,8 @@
                                 <td>
                                     <a class='btn btn-primary btn-custom-edit' href='http://localhost/connectform/adminpage/addform/edit-form.php?form_id={$row['form_id']}'>Edit</a>
                                     <a class='btn btn-danger btn-sm btn-custom-height' href='http://localhost/connectform/adminpage/addform/delete-form.php?form_id={$row['form_id']}'>Delete</a>
+                                    <a class='btn btn-download' href='http://localhost/connectform/excel.php'>Download Excel</a>
+
                                 </td>
                             </tr>";
                         }

@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 </div>
                 <div class="text-center">
                     <a class="btn btn-primary" href="http://localhost/connectform/adminpage/adduser/index-user.php">Cancel</a>
-                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="submit" class="btn btn-success">Save</button>
                 </div>
             </form>
         </div>

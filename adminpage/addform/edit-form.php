@@ -15,7 +15,7 @@ $form_id = "";
 $course_code = $course_name = $credits = $groups = "";
 $A = $B_plus = $B = $C_plus = $C = $D_plus = $D = $E = $F = $F_percent = "";
 $I = $VG = $G = $S = $W = $W_percent = $total = $instructor = "";
-$errMessage = $successMessage = "";
+$errMessage = $successMessage = $curriculum = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!isset($_GET["form_id"])) {
@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         header("location: http://localhost/connectform/adminpage/addform/index.php");
         exit;
     }
+    $curriculum = $row["curriculum"];
     $course_code = $row["course_code"];
     $course_name = $row["course_name"];
     $credits = $row["credits"];
@@ -57,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $instructor = $row["instructor"];
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $form_id = $_POST["form_id"];
+    $curriculum = $_POST["curriculum"];
     $course_code = $_POST["course_code"];
     $course_name = $_POST["course_name"];
     $credits = $_POST["credits"];
@@ -82,11 +84,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (
         empty($course_code) || empty($course_name) || empty($credits) || empty($groups) || empty($instructor)
+        || empty($curriculum)
     ) {
         $errMessage = "All the required fields are required.";
     } else {
         $sql = $conn->prepare("UPDATE create_form 
-        SET course_code = ?, 
+        SET curriculum = ?, 
+            course_code = ?, 
             course_name = ?, 
             credits = ?, 
             groups = ?, 
@@ -109,10 +113,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             total = ?, 
             instructor = ?
         WHERE form_id = ?");
-    
+
         // Bind parameters to the SQL statement
         $sql->bind_param(
-            "ssiiiddddddddddddddsssi",
+            "sssiiiddddddddddddddsssi",
+            $curriculum,
             $course_code,
             $course_name,
             $credits,
@@ -137,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $instructor,
             $form_id
         );
-    
+
         // Execute the prepared statement
         if ($sql->execute()) {
             $successMessage = "Form updated successfully.";
@@ -198,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="form-container">
-            <h2 class="text-center mb-4">New Form</h2>
+            <h2 class="text-center mb-4">Edit Form</h2>
             <?php
             if (!empty($errMessage)) {
                 echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
@@ -216,8 +221,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             ?>
 
             <form method="post">
-                <input type="hideden"name="form_id" value="<?php echo htmlspecialchars($form_id); ?>"style="margin-bottom: 20px;background-color: #A9A9A9;">
+                <input type="hideden" name="form_id" value="<?php echo htmlspecialchars($form_id); ?>" style="margin-bottom: 20px;background-color: #A9A9A9;">
                 <!-- ฟิลด์ข้อมูล -->
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Curriculum</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="curriculum" value="<?php echo htmlspecialchars($curriculum); ?>" style="width: 400px;">
+                    </div>
+                </div>
                 <div class="row mb-3">
                     <label class="col-sm-3 col-form-label">Course Code</label>
                     <div class="col-sm-9">
@@ -242,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         <input type="text" class="form-control" name="groups" value="<?php echo htmlspecialchars($groups); ?>" style="width: 400px;">
                     </div>
                 </div>
-                <!-- เพิ่มฟิลด์ข้อมูลตามที่คุณต้องการ -->
+
                 <div class="row mb-3">
                     <label class="col-sm-3 col-form-label">A</label>
                     <div class="col-sm-9">
@@ -360,11 +371,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 }
                 ?>
                 <div class="text-center">
-                <a class="btn btn-primary" href="http://localhost/connectform/adminpage/addform/index.php">Cancel</a>
+
                     <button type="button" class="btn btn-primary" onclick="calculateTotal()">Calculate Total</button>
-                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <a class="btn btn-primary-cancel" href="http://localhost/connectform/adminpage/addform/index.php">Cancel</a>
                 </div>
             </form>
+            <style>
+                .btn-primary-cancel {
+                    margin-top: 15px;
+
+                    border: none;
+                    color: white;
+                    padding: 5px 15px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin: 10px 2px;
+                    /*ปรับตำเเหน่งปุ่ม*/
+                    cursor: pointer;
+                    background-color: #fff;
+                    color: black;
+                    border: 1px solid #6633FF;
+                    margin-bottom: 1rem;
+                }
+
+                .btn-primary-cancel:hover {
+                    background-color: #6633CC;
+                    /* เปลี่ยนสีพื้นหลังเมื่อชี้ */
+                    color: white;
+                    /* เปลี่ยนสีตัวอักษรเมื่อชี้ */
+                }
+            </style>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
